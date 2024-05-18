@@ -3,7 +3,6 @@ import pickle
 import pandas as pd
 import requests
 import time
-from requests.exceptions import RequestException
 
 st.set_page_config(layout="wide")
 
@@ -16,7 +15,7 @@ def fetch_poster(movie_id):
             response.raise_for_status()
             data = response.json()
             return "http://image.tmdb.org/t/p/w500/" + data['poster_path']
-        except RequestException:
+        except:
             time.sleep(retry_delay)
     return None
 
